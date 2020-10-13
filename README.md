@@ -1,1 +1,1 @@
-# harry-potter-inventory-app
+# harry-potter-js-app
