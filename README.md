@@ -1,1 +1,1 @@
-# ravenclaw-inventory-app
+# harry-potter-inventory-app
