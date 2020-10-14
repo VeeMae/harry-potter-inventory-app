@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kurale", serif;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 30px;
+  text-align: center;
+  animation: backgroundChange 5s infinite;
+}
+
+.header-box {
+  border: 1px solid #000;
+  margin-bottom: 80px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: "Homemade Apple", cursive;
+  font-size: 2em;
+  line-height: 1.5em;
+  padding: 10px;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-color: #f8ecec;
+  }
+  50% {
+    background-color: #f1dada;
+  }
+  75% {
+    background-color: #eac8c8;
+  }
+  85% {
+    background-color: #f1dada;
+  }
+  100% {
+    background-color: #f8ecec;
+  }
+}
