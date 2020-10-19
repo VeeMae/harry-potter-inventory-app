@@ -6,7 +6,11 @@ let harryPotterRepository = (function () {
     {name: 'Luna Lovegood', height: 5.5, types: ['Ravenclaw', 'Witch'], blood_status: 'Pure blood'}
 ];
     function add(hpCharacter) {
-        harryPotterCharacters.push(hpCharacter);
+        if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
+            harryPotterCharacters.push(hpCharacter);
+        } else {
+            return 'Not a valid Character. Please try again.'
+        }
     }
     function getAll() {
         return harryPotterCharacters;
