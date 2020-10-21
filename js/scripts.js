@@ -29,19 +29,23 @@ let harryPotterRepository = (function () {
     }
 
     function showDetails(character) {
-        loadDetails(character).then(function () {
+        loadList(character).then(function () {
             console.log(character);
         });
     }
 
     function loadList(){
+        showLoadingMessage();
         return fetch(apiUrl).then(function (response) {
             return response.json();
         }).then(function (json) {
+            setTimeout(hideLoadingMessage, 350);
           json.forEach(function (item) {
               let character = {
                   name: item.name,
-                  house: item.house
+                  house: item.house,
+                  role: item.role,
+                  school: item.school
               };
               add(character);
           });
@@ -49,25 +53,34 @@ let harryPotterRepository = (function () {
             console.error(e);
         });
     }
-    
-    function loadDetails(item) {
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (details) {
-            item.bloodStatus = details.bloodStatus;
-            item.role = details.role;
-            item.school = details.school;
-        }).catch(function(e){
-            console.error(e);
-        });
+
+    function showLoadingMessage() {
+        let showMessage = document.querySelector('h3');
+        showMessage.classList.add('showMessage');
     }
+
+    function hideLoadingMessage(){
+        let hideMessage = document.querySelector('h3');
+        hideMessage.classList.add('hideMessage');
+    }
+    
+    // function loadDetails(item) {
+    //     return fetch(apiUrl).then(function (response) {
+    //         return response.json();
+    //     }).then(function (details) {
+    //         item.bloodStatus = details.bloodStatus;
+    //         item.role = details.role;
+    //         item.school = details.school;
+    //     }).catch(function(e){
+    //         console.error(e);
+    //     });
+    // }
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
-        loadList: loadList,
-        loadDetails: loadDetails
+        loadList: loadList
     };
 }) ();
 

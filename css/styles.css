@@ -65,3 +65,23 @@ ul.harrypotter-list {
   transition: 1s;
   cursor: pointer;
 }
+
+.showMessage {
+  display: block;
+  animation: zoom 4s infinite ease-in-out;
+}
+.hideMessage {
+  display: none;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
