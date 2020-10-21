@@ -41,3 +41,27 @@ h1 {
     background-color: #f8ecec;
   }
 }
+
+ul.harrypotter-list {
+  padding-right: 40px;
+}
+
+.harrypotter-list li {
+  list-style: none;
+}
+
+.char-button {
+  background-color: #fad9c7c5;
+  width: 20vh;
+  border: 2px solid #fcd1aa;
+  display: inline-block;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.char-button:hover {
+  opacity: 0.5;
+  transition: 1s;
+  cursor: pointer;
+}

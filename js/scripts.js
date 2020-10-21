@@ -16,12 +16,31 @@ let harryPotterRepository = (function () {
         return harryPotterCharacters;
     }
 
+    function addListItem(character){
+        let characterList = document.querySelector('ul');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = character.name;
+        button.classList.add('char-button');
+        listItem.appendChild(button);
+        characterList.appendChild(listItem);
+
+        button.addEventListener('click', function (event) {
+            showDetails(character);
+        });
+    }
+
+    function showDetails(character) {
+        console.log(character.name);
+    }
+
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
     };
 }) ();
 
 harryPotterRepository.getAll().forEach( function (character) {
-    document.write("<p>" + character.name + " is " + character.height + " feet tall," + " of the " + character.blood_status + " type, " + "and resides in the " + character.types[0] + " house." + "</p>")
+    harryPotterRepository.addListItem(character);
 })
