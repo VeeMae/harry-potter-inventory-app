@@ -1,10 +1,7 @@
 let harryPotterRepository = (function () {
-    let harryPotterCharacters = [
-    {name: 'Harry Potter', height: 5.7, types: ['Gryffindor', 'Wizard'], blood_status: 'Half-blood'},
-    {name: 'Hermione Jean Granger', height: 5.5, types: ['Gryffindor', 'Witch'], blood_status: 'Muggle-born'},
-    {name: 'Ron Weasley', height: 5.9, types: ['Gryffindor', 'Wizard'], blood_status: 'Pure blood'},
-    {name: 'Luna Lovegood', height: 5.5, types: ['Ravenclaw', 'Witch'], blood_status: 'Pure blood'}
-];
+    let harryPotterCharacters = [];
+    let apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
+
     function add(hpCharacter) {
         if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
             harryPotterCharacters.push(hpCharacter);
@@ -12,6 +9,7 @@ let harryPotterRepository = (function () {
             return 'Not a valid Character. Please try again.'
         }
     }
+    
     function getAll() {
         return harryPotterCharacters;
     }
@@ -31,16 +29,50 @@ let harryPotterRepository = (function () {
     }
 
     function showDetails(character) {
-        console.log(character.name);
+        loadDetails(character).then(function () {
+            console.log(character);
+        });
+    }
+
+    function loadList(){
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+          json.forEach(function (item) {
+              let character = {
+                  name: item.name,
+                  house: item.house
+              };
+              add(character);
+          });
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
+    
+    function loadDetails(item) {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            item.bloodStatus = details.bloodStatus;
+            item.role = details.role;
+            item.school = details.school;
+        }).catch(function(e){
+            console.error(e);
+        });
     }
 
     return {
         add: add,
         getAll: getAll,
-        addListItem: addListItem
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails
     };
 }) ();
 
-harryPotterRepository.getAll().forEach( function (character) {
-    harryPotterRepository.addListItem(character);
-})
+harryPotterRepository.loadList().then(function() {
+    harryPotterRepository.getAll().forEach(function(character){
+        harryPotterRepository.addListItem(character);
+    });
+});
