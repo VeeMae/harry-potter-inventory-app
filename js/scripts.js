@@ -31,7 +31,7 @@ let harryPotterRepository = (function () {
 
     function showDetails(character) {
         loadList(character).then(function () {
-            showHpModal(`${character.name}`, `${character.house}`, `${character.role}` );
+            showHpModal(`${character.name}`, `${character.house}`, `${character.role}`, `${character.school}` );
         });
     }
 
@@ -77,7 +77,7 @@ let harryPotterRepository = (function () {
     //     });
     // }
 
-    function showHpModal(name, house, role) {
+    function showHpModal(name, house, role, school) {
         let modal = document.createElement('div');
         modal.classList.add('modal');
 
@@ -92,13 +92,17 @@ let harryPotterRepository = (function () {
         let detailElement = document.createElement('h2');
         detailElement.innerText = house;
 
-        let otherDetailElement = document.createElement('p');
+        let otherDetailElement = document.createElement('h3');
         otherDetailElement.innerText = role;
+
+        let moreDetailElement = document.createElement('h4');
+        moreDetailElement.innerText = school;
 
         modal.appendChild(closeButton);
         modal.appendChild(nameElement);
         modal.appendChild(detailElement);
         modal.appendChild(otherDetailElement);
+        modal.appendChild(moreDetailElement);
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add('is-visible');
@@ -106,7 +110,6 @@ let harryPotterRepository = (function () {
 
     function hideHpModal() {
         modalContainer.classList.remove('is-visible');
-        console.log(modalContainer);
     }
 
     window.addEventListener('keydown', (e) => {

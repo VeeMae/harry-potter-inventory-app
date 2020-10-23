@@ -6,9 +6,10 @@ body {
   font-family: "Kurale", serif;
   font-size: 18px;
   line-height: 18px;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   animation: backgroundChange 5s infinite;
+  margin: 0 auto;
 }
 
 .header-box {
@@ -52,7 +53,7 @@ ul.harrypotter-list {
 
 .char-button {
   background-color: #fad9c7c5;
-  width: 20vh;
+  width: 30vh;
   border: 2px solid #fcd1aa;
   display: inline-block;
   margin: 10px auto;
@@ -92,14 +93,14 @@ ul.harrypotter-list {
 
 #modal-container.is-visible {
   position: fixed;
-  padding: 30px;
+  padding: 20px;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(211, 211, 211, 0.856);
   z-index: 999;
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   text-align: center;
 }
@@ -119,4 +120,14 @@ ul.harrypotter-list {
   font-size: 13px;
   border: 0;
   background: none;
+}
+
+@media screen and (max-width: 760px) {
+  .header-box {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .char-button {
+    width: 70%;
+  }
 }
