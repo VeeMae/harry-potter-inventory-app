@@ -1,6 +1,7 @@
 let harryPotterRepository = (function () {
     let harryPotterCharacters = [];
     let apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
+    let modalContainer = document.querySelector('#modal-container');
 
     function add(hpCharacter) {
         if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
@@ -30,7 +31,7 @@ let harryPotterRepository = (function () {
 
     function showDetails(character) {
         loadList(character).then(function () {
-            console.log(character);
+            showHpModal(`${character.name}`, `${character.house}`, `${character.role}` );
         });
     }
 
@@ -76,11 +77,58 @@ let harryPotterRepository = (function () {
     //     });
     // }
 
+    function showHpModal(name, house, role) {
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let closeButton = document.createElement('button');
+        closeButton.classList.add('modal-close');
+        closeButton.innerText = 'Close';
+        closeButton.addEventListener('click', hideHpModal);
+
+        let nameElement = document.createElement('h1');
+        nameElement.innerText = name;
+
+        let detailElement = document.createElement('h2');
+        detailElement.innerText = house;
+
+        let otherDetailElement = document.createElement('p');
+        otherDetailElement.innerText = role;
+
+        modal.appendChild(closeButton);
+        modal.appendChild(nameElement);
+        modal.appendChild(detailElement);
+        modal.appendChild(otherDetailElement);
+        modalContainer.appendChild(modal);
+
+        modalContainer.classList.add('is-visible');
+    }
+
+    function hideHpModal() {
+        modalContainer.classList.remove('is-visible');
+        console.log(modalContainer);
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+          hideHpModal();  
+        }
+      });
+
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideHpModal();
+        }
+      });
+
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
-        loadList: loadList
+        loadList: loadList,
+        showHpModal: showHpModal,
+        hideHpModal: hideHpModal
     };
 }) ();
 

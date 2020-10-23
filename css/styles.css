@@ -85,3 +85,38 @@ ul.harrypotter-list {
     transform: scale(1);
   }
 }
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(211, 211, 211, 0.856);
+  z-index: 999;
+  overflow: hidden;
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  background-color: #fff;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  max-width: 80vh;
+}
+
+.modal-close {
+  float: right;
+  font-size: 13px;
+  border: 0;
+  background: none;
+}
