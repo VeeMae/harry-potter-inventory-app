@@ -1,7 +1,6 @@
 let harryPotterRepository = (function () {
     let harryPotterCharacters = [];
     let apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
-    let modalContainer = document.querySelector('#modal-container');
     
     function add(hpCharacter) {
         if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
@@ -16,11 +15,16 @@ let harryPotterRepository = (function () {
     }
 
     function addListItem(character){
-        let characterList = document.querySelector('ul');
+        let characterList = document.querySelector('.harrypotter-list');
         let listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
         let button = document.createElement('button');
         button.innerText = character.name;
+        button.setAttribute('data-target', '#hpModal');
+        button.setAttribute('data-toggle', 'modal');
         button.classList.add('char-button');
+        button.classList.add('btn');
+
         listItem.appendChild(button);
         characterList.appendChild(listItem);
 
@@ -31,7 +35,7 @@ let harryPotterRepository = (function () {
 
     function showDetails(character) {
         loadList(character).then(function () {
-            showHpModal(`${character.name}`, `${character.house}`, `${character.role}`, `${character.school}`);
+            showHpModal(character);
         });
     }
 
@@ -65,64 +69,27 @@ let harryPotterRepository = (function () {
         hideMessage.classList.add('hideMessage');
     }
 
-    function showHpModal(name, house, role, school) {
-        let modalDiv = document.createElement('div');
-        modalDiv.classList.add('modal');
+    function showHpModal(item) {
+        let modalBody = $('.modal-body');
+        let modalTitle = $('.modal-title');
+        let modalHeader = $('.modal-header');
 
-        let closeButton = document.createElement('button');
-        closeButton.classList.add('modal-close');
-        closeButton.innerText = 'Close';
-        closeButton.addEventListener('click', function (event) {
-            hideHpModal(removeModal());
-        });
+        // Clears out modal content each render
+        modalTitle.empty();
+        modalBody.empty();
 
-        let nameElement = document.createElement('h1');
-        nameElement.innerText = name;
+        let hpName = $("<h1>" + item.name + "</h1>");
+        let hpHouse = $("<h2>" + item.house + "</h2>");
+        let hpRole = $("<h3>" + item.role + "</h3>");
+        let hpSchool = $("<h4>" + item.school + "</h4>"); 
 
-        let detailElement = document.createElement('h2');
-        detailElement.innerText = house;
-
-        let otherDetailElement = document.createElement('h3');
-        otherDetailElement.innerText = role;
-
-        let moreDetailElement = document.createElement('h4');
-        moreDetailElement.innerText = school;
-
-        modalDiv.appendChild(closeButton);
-        modalDiv.appendChild(nameElement);
-        modalDiv.appendChild(detailElement);
-        modalDiv.appendChild(otherDetailElement);
-        modalDiv.appendChild(moreDetailElement);
-        modalContainer.appendChild(modalDiv);
-
-        modalContainer.classList.add('is-visible');
+        modalTitle.append(hpName);
+        modalBody.append(hpHouse);
+        modalBody.append(hpRole);
+        modalBody.append(hpSchool);
+        modalHeader.append(modalTitle);
+        modalHeader.append(modalBody);
     }
-
-    function hideHpModal() {
-        document.querySelector('#modal-container').classList.remove('is-visible'); 
-    }
-
-    function removeModal (){
-        let node = document.getElementById('modal-container');
-        while (node.firstChild) {
-            node.removeChild(node.firstChild);
-        }
-    }
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-          hideHpModal();
-          removeModal();
-        }
-      });
-
-    modalContainer.addEventListener('click', (e) => {
-        let target = e.target;
-        if (target === modalContainer) {
-            hideHpModal();
-            removeModal();
-        }
-      });
 
     return {
         add: add,
@@ -132,9 +99,7 @@ let harryPotterRepository = (function () {
         loadList: loadList,
         showLoadingMessage: showLoadingMessage,
         hideLoadingMessage: hideLoadingMessage,
-        showHpModal: showHpModal,
-        hideHpModal: hideHpModal,
-        removeModal: removeModal
+        showHpModal: showHpModal
     };
 }) ();
 
