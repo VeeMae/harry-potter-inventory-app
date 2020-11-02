@@ -1,0 +1,25 @@
+{
+  "name": "harry-potter-js-app",
+  "version": "1.0.0",
+  "description": "HP Characters Interactive List",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VeeMae/ravenclaw-inventory-app.git"
+  },
+  "author": "Venus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VeeMae/ravenclaw-inventory-app/issues"
+  },
+  "homepage": "https://github.com/VeeMae/ravenclaw-inventory-app#readme"
+}
