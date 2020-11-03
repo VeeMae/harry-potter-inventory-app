@@ -53,7 +53,9 @@ const harryPotterRepository = (function() {
           role: item.role,
           school: item.school,
         };
-        add(character);
+        if (item.house !== undefined) {
+          add(character);
+        };
       });
     }).catch(function(e) {
       console.error(e);

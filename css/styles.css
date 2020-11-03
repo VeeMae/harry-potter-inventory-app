@@ -5,7 +5,7 @@
 body {
   font-family: "Kurale", serif;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   padding: 20px;
   text-align: center;
   animation: backgroundChange 8s linear infinite;
@@ -15,30 +15,40 @@ body {
 
 .header-box {
   border: 2px solid #22282e;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 80px;
   border-radius: 20px;
   animation: fadeIn ease-in 3s;
 }
 
+.header-box h1 {
+  animation: fadeIn 4s linear;
+  padding: 25px;
+  margin: 0 auto;
+}
+
+a.navbar-brand {
+  padding: 0;
+  margin-right: 0;
+}
 .navbar {
   animation: backgroundChange 8s linear infinite;
   animation: fadeIn ease-in 3s;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+ul.navbar-nav {
+  padding: 10px;
+  line-height: 1.2em;
 }
 
 div#navbarNav.navbar-collapse.collapse.show {
   background-color: #576675;
 }
 
-.header-box h1 {
-  animation: fadeIn 4s linear;
-  padding: 30px;
-  margin: 0 auto;
-}
-
 a#about-link {
   font-family: "Kurale", serif;
-  font-size: 1em;
   padding: 20px;
   margin: 0 auto;
   color: #000;
@@ -47,6 +57,7 @@ a#about-link {
 
 a#about-link:hover,
 #img-link:hover {
+  color: #1b2e42;
   cursor: pointer;
   text-decoration: none;
   opacity: 0.4;
@@ -94,18 +105,21 @@ footer.container-fluid {
   padding: 0;
   margin: 0 auto;
   margin-top: 145px;
+  animation: fadeInUp 5s ease-in;
+}
+.footer-link {
+  color: #fff;
 }
 
-#footer-content {
-  font-size: 0.6em;
+.footer-content {
+  font-size: 0.8em;
 }
 
 .harrypotter-list {
   display: inline-block;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 0;
-  padding-left: 40px;
   animation: fadeInUp 5s ease-in;
 }
 
@@ -119,10 +133,6 @@ footer.container-fluid {
   }
 }
 
-ul.harrypotter-list {
-  padding-right: 40px;
-}
-
 .list-group-item {
   background-color: transparent;
   border: none;
@@ -130,33 +140,43 @@ ul.harrypotter-list {
 
 .modal-header {
   border: none;
-  padding-top: 20px;
   margin: 0 auto;
+  padding: 0;
 }
 
 .modal-content {
   background-color: #9da7b3;
   border-radius: 10px;
-  height: auto;
 }
 
 .modal-content h1 {
   margin-top: 35px;
-  font-size: 1.3em;
-  width: 45%;
+  font-size: 1.5em;
 }
 
-.modal-content h2,
-.modal-content h3,
-.modal-content h4 {
+h5.modal-title {
+  padding-left: 20px;
+}
+
+.modal-body {
+  padding-top: 20px;
+}
+
+.modal-body h2,
+.modal-body h3,
+.modal-body h4 {
   padding-bottom: 20px;
 }
 
+div.modal-footer {
+  padding: 10px;
+}
+
 .char-button {
-  background-color: #bab2ab;
+  background-color: #e4e2e2;
   width: 30vh;
   height: 15vh;
-  border: 4px solid #aca39a;
+  border: 2px solid #b3aea8;
   display: inline-block;
   margin: 10px auto;
   border-radius: 10px;
@@ -171,9 +191,10 @@ ul.harrypotter-list {
   animation: buttonHoverFx 1s linear infinite;
 }
 .char-button:focus {
-  opacity: 0.5;
+  opacity: 0.7;
   transition: 1s;
   cursor: pointer;
+  animation: buttonHoverFx 1s linear infinite;
 }
 
 .showMessage {
@@ -190,7 +211,9 @@ ul.harrypotter-list {
   font-family: "Homemade Apple", cursive;
 }
 section.container-fluid {
+  width: 75%;
   height: 240px;
+  line-height: 1.4em;
   margin: 0 auto;
   padding-bottom: 50px;
   margin-bottom: 90px;
@@ -205,14 +228,30 @@ section.container-fluid {
 
 .profile-portrait {
   width: 150px;
-  height: auto;
   margin: 0 auto;
   border-radius: 50%;
-  border: 4px solid #000;
+  border: 3px solid #000;
   text-align: center;
 }
 
+#lavender-img {
+  animation: lavender-fx 20s ease-in-out infinite;
+  opacity: 0.5;
+}
+
 /* keyframes */
+@keyframes lavender-fx {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -301,22 +340,35 @@ section.container-fluid {
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
+@media all and (max-width: 768px) {
   body {
     padding: 0;
   }
+  h2 {
+    font-size: 0.9em;
+  }
+
+  h3 {
+    font-size: 0.8em;
+  }
+
+  h4 {
+    font-size: 0.7em;
+  }
+
   .header-box {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 70px;
     margin-bottom: 60px;
   }
+
   .header-box h1 {
     font-size: 1.5em;
   }
 
   .char-button {
-    width: 80%;
+    width: 90%;
     height: 20vh;
     margin: 0 auto;
     font-size: 1.2em;
@@ -328,21 +380,33 @@ section.container-fluid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     margin: 0 auto;
-    /* padding-left: 30px; */
   }
+
   div.modal-body.container-fluid {
-    width: 70%;
+    margin: 0 auto;
+    padding: 30px 10px 5px 20px;
   }
-  div.modal-content {
+
+  div.modal-content,
+  .modal-header {
     width: 95%;
+    margin: 0 auto;
   }
+
   h5.modal-title {
-    width: 35%;
+    padding: 0;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-size: 0.8em;
     margin-right: 10px;
+  }
+
+  .footer-content {
+    font-size: 0.6em;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media all and (min-width: 768px) and (max-width: 1024px) {
   .harrypotter-list {
     width: 100%;
     grid-template-columns: 1fr 1fr;
