@@ -117,7 +117,7 @@ footer.container-fluid {
 
 .harrypotter-list {
   display: inline-block;
-  width: 90%;
+  width: 75vw;
   margin: 0 auto;
   padding: 0;
   animation: fadeInUp 5s ease-in;
@@ -175,12 +175,12 @@ div.modal-footer {
 .char-button {
   background-color: #e4e2e2;
   width: 30vh;
-  height: 15vh;
+  height: fit-content;
   border: 2px solid #b3aea8;
   display: inline-block;
   margin: 10px auto;
   border-radius: 10px;
-  padding: 20px;
+  padding: 25px;
   font-size: 1.5em;
 }
 
@@ -368,8 +368,8 @@ section.container-fluid {
   }
 
   .char-button {
-    width: 90%;
-    height: 20vh;
+    width: 90vw;
+    height: 100px;
     margin: 0 auto;
     font-size: 1.2em;
     padding: 10px;
@@ -387,10 +387,13 @@ section.container-fluid {
     padding: 30px 10px 5px 20px;
   }
 
-  div.modal-content,
-  .modal-header {
+  div.modal-header {
     width: 95%;
-    margin: 0 auto;
+  }
+
+  div.modal-content {
+    width: 90vw;
+    margin: 10px;
   }
 
   h5.modal-title {
