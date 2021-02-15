@@ -114,12 +114,13 @@ footer.container-fluid {
 .footer-content {
   font-size: 0.8em;
 }
-
+ul {
+  margin-right: 0;
+}
 .harrypotter-list {
   display: inline-block;
   width: 75vw;
   margin: 0 auto;
-  padding: 0;
   animation: fadeInUp 5s ease-in;
 }
 

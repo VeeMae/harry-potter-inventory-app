@@ -1,7 +1,10 @@
 /* eslint-disable require-jsdoc */
 const harryPotterRepository = (function() {
   const harryPotterCharacters = [];
-  const apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
+  // API under construction
+  // const apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
+
+  const apiUrl = 'http://hp-api.herokuapp.com/api/characters';
 
   function add(hpCharacter) {
     if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
@@ -50,12 +53,12 @@ const harryPotterRepository = (function() {
         const character = {
           name: item.name,
           house: item.house,
-          role: item.role,
-          school: item.school,
+          species: item.species,
+          ancestry: item.ancestry,
         };
-        if (item.house !== undefined) {
+        if (item.house !== '' && item.species !== '') {
           add(character);
-        };
+        }
       });
     }).catch(function(e) {
       console.error(e);
@@ -83,13 +86,13 @@ const harryPotterRepository = (function() {
 
     const hpName = $('<h1>' + item.name + '</h1>');
     const hpHouse = $('<h2>' + item.house + '</h2>');
-    const hpRole = $('<h3>' + item.role + '</h3>');
-    const hpSchool = $('<h4>' + item.school + '</h4>');
+    const hpSpecies = $('<h3>' + item.species + '</h3>');
+    const hpAncestry = $('<h4>' + item.ancestry + '</h4>');
 
     modalTitle.append(hpName);
     modalBody.append(hpHouse);
-    modalBody.append(hpRole);
-    modalBody.append(hpSchool);
+    modalBody.append(hpSpecies);
+    modalBody.append(hpAncestry);
     modalHeader.append(modalTitle);
     modalHeader.append(modalBody);
   }
