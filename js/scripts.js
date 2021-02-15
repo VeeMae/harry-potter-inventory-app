@@ -4,7 +4,7 @@ const harryPotterRepository = (function() {
   // API under construction
   // const apiUrl = 'https://www.potterapi.com/v1/characters/?key=$2a$10$vQ/irCHphbHxnrgkhcfr8O4J/zM3mkvxwFkZ25Upq5RyrYZfzNz2i';
 
-  const apiUrl = 'http://hp-api.herokuapp.com/api/characters';
+  const apiUrl = 'https://hp-api.herokuapp.com/api/characters';
 
   function add(hpCharacter) {
     if ( (hpCharacter !== null) && (typeof hpCharacter === 'object') ) {
