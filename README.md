@@ -19,7 +19,7 @@ In order to still view the application without any risks, please view the whole 
 - Within the terminal, type `http-server` and click on any of the local hosts that are presented
 - You should now be able to view the application and interact with it
 
-## Technical Requirements
+## Technical Information
 
 - Loads data from an external API
 - Displays a list of items specified from the API
